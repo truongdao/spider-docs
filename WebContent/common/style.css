@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+   
+body{
+	max-width: 800px;
+	margin: 0px auto;
+}
+
+header {
+    background-color:black;
+    color:white;
+    text-align:left;
+    /*vertical-align: text-top;*/
+    padding:5px; 
+    height:90px;
+}
+nav {
+    line-height:30px;
+    background-color:#bbbbbb;
+    max-width:130px;
+    float:left;
+    padding:5px; 
+}
+
+.ul-sidebar{
+	padding:5px; 
+	margin:15px
+	
+}
+
+section {
+	/*background-color:yellow;*/
+    max-width:623px;
+    float:left;
+    padding:20px; 
+}
+footer {
+    background-color:#bbbbbb;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px; 
+}

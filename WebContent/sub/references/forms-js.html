@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src='common.js'></script>
+<script src='back.js'></script>
+<title>forms.js</title>
+</head>
+<body>
+<section id='content'>
+<!--------------------------- START CONTENT ---------------------------------->
+
+	<div id='article_title' style='font-size: 200%;height: 90px;line-height: 90px;'>
+		forms.js
+	</div>
+	<div id='article_brief'>
+		Thư viện cung cấp phương thức để xây dựng một biểu mẫu nhập dữ liệu có giao diện.
+	</div>
+	<div id='article_body'>
+
+		<br/> Ví dụ:
+		<br/>
+		<code>
+		<pre>
+	var form1 = new Form([
+	{'0': Label('Name:'),  name: TextField('Truong'),  '1':  CheckBox('Male') },
+	{'1': Label('Age:'),   age:  TextField(''),        '':   Label('*required')},   ]);
+	
+	form1.append(
+	[Confirm('OK'),  Confirm('Cancel')]     );
+	
+	form1.show();
+	
+	if(form1.ret == 'OK')
+	outln('Form submitted!\tname: '+form1.rows[0]['name'].value());
+	if(form1.ret == 'Cancel')
+	outln('Form cancel!');
+	if(form1.ret == null)
+	outln('Form ignored!');			
+		</pre>
+		</code> 
+		Form is shown:<br/>
+		<center><img src="forms-js/forms_ref_ex.jpg"/></center>
+		<br/>
+		<br/>
+		<table border="1" style="width:100%">
+			<tbody>
+				<tr>
+					<td bgcolor="aqua"><b>Modifier and Type</b></td>
+					<td bgcolor="aqua"><b>Description</b></td>
+				</tr>
+				<tr>
+					<td><b><code>Form</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>new  Form( ls_items )</b></code></a><br/>
+					<br/> 
+					Khởi tạo danh sách các phần tử trong biểu mẫu từ <code>ls_items</code>.<br/> 
+					Đó là một mảng các đối tượng javascript (định dạng nhìn giống JSON), mỗi phần tử của mảng đại diện cho một dòng; mỗi dòng là một đối tượng (hoặc mảng) mà các phần tử của nó đều có thuộc tính <code>.r</code> là một đối tượng <code>Java</code> dẫn xuất từ lớp <code>javax.swing.JComponent</code>.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>Form.append( item )</b></code></a><br/>
+						<br/> 
+						Chèn một dòng <code>item</code>vào cuối danh sách.<br/> 
+						Dòng này phải là một mảng đơn hoặc đối tượng có điều kiện như một dòng được mô tả trong đối tượng <code>ls_items</code> được mô tả trên.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>Form.append_1( item )</b></code></a><br/>
+						<br/> 
+						Chèn một dòng <code>item</code> vào trước dòng cuối trong danh sách.<br/> 
+						Dùng trong trường hợp đã thêm các nút xác nhận "OK" hoặc "Cancel" vào dòng cuối mà vẫn muốn mở rộng danh sách thuộc tính.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>Form.show( )</b></code></a><br/>
+						<br/> 
+						Hiển thị Form và vô hiệu hóa giao diện chính.<br/> 
+						Sau khi Form đã được đóng lại, kiểm tra <code>Form.ret</code> để xem lý do nó đã bị đóng lại.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>Form.hide( )</b></code></a><br/>
+						<br/> 
+						Ẩn Form đi.<br/> 
+						(Hiếm khi dùng!)
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>Component</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>Component( )</b></code></a><br/>
+						<br/> 
+						Giao diện chung nhất của các đối tượng có thể thêm vào Form.<br/> 
+						Các thuộc tính phải có:<br/>
+						<ul>
+							<li><code>up</code></li>
+							: tham chiếu đối tượng cha, thuộc tính này chỉ cần khai báo, nó sẽ được truyền giá trị bởi đối tượng nào sử dụng component này. Hữu ích khi xử lý sự kiện.
+
+							<li><code>r</code></li>
+							: Đối tượng Java cung cấp giao diện thật, phải dẫn xuất từ <code>javax.swing.JComponent</code> hoặc <code>java.awt.Component</code>
+							<li><code>value() : string</code></li>
+							: Hàm trả về giá trị /trạng thái của đối tượng, được gọi bởi người sử dụng Form
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>Button</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>Button( value )</b></code></a><br/>
+						<br/> 
+						Trả về đối tượng <code>Button</code> với nhãn <code>value</code> có thể đặt vào Form, 
+						chúng thì chứa một <code>Java JButton</code> ở trong. <code>Button.value()</code> trả 
+						về nhãn của <code>Button</code>. Đối tượng này không được cài sự kiện trước, có thể 
+						thêm sau theo ý người sử dụng.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>Confirm</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>Confirm( value )</b></code></a><br/>
+						<br/> 
+						Trả về đối tượng <code>Confirm</code> với nhãn <code>value</code> có thể đặt vào Form, 
+						chúng là một Button được cài sự kiện để khi nhấn, chúng sẽ ẩn Form và trả đặt nhãn 
+						của nó <code>Confirm.value()</code> vào <code>Form.ret</code> như giá trị trả về.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>Label</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>Label( value )</b></code></a><br/>
+						<br/> 
+						Trả về đối tượng <code>Label</code> với nhãn <code>value</code> có thể đặt vào Form 
+						để dẫn giải, chúng thì chứa một <code>Java JLabel</code> ở trong. <code>JLabel.value()</code> 
+						trả về nhãn của <code>Label</code>.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>TextField</code></b></td>
+					<td><a href="#cmd_cmd" style="text-decoration:none">
+					<code><b>TextField( value )</b></code></a><br/>
+						<br/> 
+						Trả về đối tượng <code>TextField</code> để nhập giá trị khởi tạo với <code>value</code> 
+						có thể đặt vào Form, chúng thì chứa một <code>Java JTextField</code> ở trong. 
+						<code>JTextField.value()</code> trả về nội dung của <code>TextField</code>.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+		<br/>
+		<b>Details</b>
+		<br/>
+		<font color="BLUE"> cần bổ sung... </font>
+		<hr/>
+		<br/>
+
+				
+	</div><!-- END article_body -->
+	
+	<div id='article_extend'>
+			
+	</div>
+			
+		
+<!-----------------------END  START CONTENT ---------------------------------->
+</section>
+</body>
+	
+</html>

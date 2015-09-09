@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src='common.js'></script>
+<script src='back.js'></script>
+<title>excel.js</title>
+</head>
+<body>
+<section id='content'>
+<!--------------------------- START CONTENT ---------------------------------->
+
+	<div id='article_title' style='font-size: 200%;height: 90px;line-height: 90px;'>
+		excel.js
+	</div>
+	<div id='article_brief'>
+		Thư viện này cung cấp các đối tượng và phương thức để thao tác với dữ liệu trên tệp Excel (.xls).
+	</div>
+	<div id='article_body'>
+
+		Chuỗi truy cập <code>Mở tệp excel -&gt; mở sheet -&gt; truy cập cell</code>
+		, tương ứng với các đối tượng <code>Xls -&gt; Book -&gt; Sheet -&gt; Cell</code>
+		được cung cấp bởi thư viện này.<br/> 
+		
+		Các đối tượng <code>Book, Sheet, Cell</code> không chứa các hàm thao tác 
+		trực tiếp với các thành phần của file Excel mà chỉ cung cấp các hàm lấy 
+		về đối tượng con, cháu của nó. Thay vào đó chúng sử dụng kỹ thuật đóng gói 
+		để chứa một đối tượng "thật" tên là <code>.r</code> có khả năng thao tác 
+		trên trên file excel. Đối tượng <code>.r</code> này là một thực thể Java 
+		của thư viện POI. <br/> 
+		
+		<br/>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td bgcolor="chartreuse">excel.js object</td>
+					<td bgcolor="chartreuse">POI object</td>
+				</tr>
+				<tr>
+					<td>Xls</td>
+					<td><code>none</code></td>
+				</tr>
+				<tr>
+					<td>Book.r</td>
+					<td><code><a
+								href="https://poi.apache.org/apidocs/org/apache/poi/hssf/usermodel/HSSFWorkbook.html"
+								style="text-decoration: none" rel="nofollow">
+								org.apache.poi.hssf.usermodel.HSSFWorkbook</a></code></td>
+				</tr>
+				<tr>
+					<td>Sheet.r</td>
+					<td><code><a
+								href="https://poi.apache.org/apidocs/org/apache/poi/hssf/usermodel/HSSFSheet.html"
+								style="text-decoration: none" rel="nofollow">
+								org.apache.poi.hssf.usermodel.HSSFSheet</a></code></td>
+				</tr>
+				<tr>
+					<td>Cell.r</td>
+					<td><code><a
+								href="https://poi.apache.org/apidocs/org/apache/poi/hssf/usermodel/HSSFCell.html"
+								style="text-decoration: none" rel="nofollow">
+								org.apache.poi.hssf.usermodel.HSSFCell</a></code></td>
+				</tr>
+			</tbody>
+		</table><br/> 
+		
+		Ví dụ:
+		<code><br/>
+			var book = Xls.open('input.xls'); <br/>
+			var sheet = book.sheet(0); <br/>
+			var cell = sheet.cell( 0, 0); <br/>
+			outln(cell.r.toString());<br/>
+			
+			<br/>
+		</code>
+		Chương trình sẽ in ra nội dung cell ở dòng 0, cột 0, sheet đầu tiên
+		của file excel 'input.xls'. Chú ý <code>cell.r</code> trả về đối tượng
+		<code>java Cell</code> của thư viện <code>POI, toString()</code> là hàm của
+		<code>java Cell</code>, hãy tra bảng tham khảo của thư viện này để biết các 
+		chức năng được cung cấp.<br/> 
+		
+		<br/>
+		<table border="1" style="width: 100%">
+			<tbody>
+				<tr>
+					<td bgcolor="aqua"><b>Modifier and Type</b></td>
+					<td bgcolor="aqua"><b>Description</b></td>
+				</tr>
+				<tr>
+					<td><b><code> Book </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Xls.open( file_path ) </b></code></a> <br/> 
+								<br/> Mở một tệp .xls tại đường dẫn <code>file_path</code>
+								và trả về đối tượng <code>Book</code> để thao tác.</td>
+				</tr>
+				<tr>
+					<td><b><code> void </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Book.save() </b>
+							</code></a> <br/> <br/> Lưu những thay đổi trên đối tượng <code>Book</code>
+						này xuống tệp Excel.</td>
+				</tr>
+				<tr>
+					<td><b><code> void </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Book.saveAs( str_path) </b>
+							</code></a> <br/> <br/> Lưu đối tượng <code>Book</code> đang làm việc
+						xuống một tệp Excel khác có tên <code>str_path</code>.</td>
+				</tr>
+				<tr>
+					<td><b><code> Sheet </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Book.sheet ( id ) </b>
+							</code></a> <br/> <br/> Mở một <code>Sheet</code> theo tên của nó hay
+						chỉ số thứ tự. Có thể là <code>book.sheet(0)</code> hoặc <code>book.sheet('Sheet1')</code>.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code> Sheet[] </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Book.sheets () </b>
+							</code></a> <br/> <br/> Trả về toàn bộ các <code>Sheet</code> mà <code>Book</code>
+						đang có.</td>
+				</tr>
+				<tr>
+					<td><b><code> Cell </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Book.cell ( sheet_id, row, col ) </b>
+							</code></a> <br/> <br/> Trả về một <code>Cell</code> tại dòng <code>row</code>,
+						cột <code>col</code>, tại <code>Sheet</code> có mã <code>sheet_id</code>
+						(thứ tự hoặc tên) trong <code>Book</code> đang mở. (Truy xuất
+						nhanh)</td>
+				</tr>
+				<tr>
+					<td><b><code> Cell[] </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Book.cells ( sheet_id) </b>
+							</code></a> <br/> <br/> Trả về toàn bộ <code>Cell</code> trong <code>Sheet</code>
+						có mã <code>sheet_id</code> (thứ tự hoặc tên) trong <code>Book</code>
+						đang mở.(Truy xuất nhanh)</td>
+				</tr>
+				<tr>
+					<td><b><code> HSSFWorkbook </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Book.r </b>
+							</code></a> <br/> <br/> Đối tượng <code>
+							<a
+								href="https://poi.apache.org/apidocs/org/apache/poi/hssf/usermodel/HSSFWorkbook.html"
+								style="text-decoration: none" rel="nofollow">
+								org.apache.poi.hssf.usermodel.HSSFWorkbook</a>
+						</code></td>
+				</tr>
+				<tr>
+					<td><b><code> Cell </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Sheet.cell ( row, col ) </b>
+							</code></a> <br/> <br/> Trả về <code>Cell</code> ở dòng <code>row</code>,
+						cột <code>col</code> trong <code>Sheet</code> đang mở.</td>
+				</tr>
+				<tr>
+					<td><b><code> Cell[] </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Sheet.cells ( ) </b>
+							</code></a> <br/> <br/> Trả về toàn bộ <code>Cell</code> trong <code>Sheet</code>
+						đang mở.</td>
+				</tr>
+				<tr>
+					<td><b><code> Sheet </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Sheet.right ( offset ) </b>
+							</code></a> <br/> <br/> Lấy một Sheet bên phải và cách Sheet hiện tại
+						số <code>offset</code> sheets.</td>
+				</tr>
+				<tr>
+					<td><b><code> Sheet </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Sheet.left ( offset ) </b>
+							</code></a> <br/> <br/> Lấy một Sheet bên trái và cách Sheet hiện tại
+						số <code>offset</code> sheets.</td>
+				</tr>
+				<tr>
+					<td><b><code> HSSFSheet </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Sheet.r </b>
+							</code></a> <br/> <br/> Đối tượng <code>
+							<a
+								href="https://poi.apache.org/apidocs/org/apache/poi/hssf/usermodel/HSSFSheet.html"
+								style="text-decoration: none" rel="nofollow">
+								org.apache.poi.hssf.usermodel.HSSFSheet</a>
+						</code></td>
+				</tr>
+				<tr>
+					<td><b><code> Book </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Cell.book </b>
+							</code></a> <br/> <br/> Trả về đối tượng Book đang chứa Sheet đó.</td>
+				</tr>
+				<tr>
+					<td><b><code> HSSFCell </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Cell.r </b>
+							</code></a> <br/> <br/> Đối tượng <code>
+							<a
+								href="https://poi.apache.org/apidocs/org/apache/poi/hssf/usermodel/HSSFCell.html"
+								style="text-decoration: none" rel="nofollow">
+								org.apache.poi.hssf.usermodel.HSSFCell</a>
+						</code></td>
+				</tr>
+				<tr>
+					<td><b><code> Sheet </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Cell.sheet </b>
+							</code></a> <br/> <br/> Trả về đối tượng Sheet đang chứa Cell đó.</td>
+				</tr>
+				<tr>
+					<td><b><code> Cell </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Cell.down ( offset ) </b>
+							</code></a> <br/> <br/> Lấy một Cell phía dưới và cách cell hiện tại số
+						<code>offset</code> dòng.</td>
+				</tr>
+				<tr>
+					<td><b><code> Cell </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Cell.right ( offset ) </b>
+							</code></a> <br/> <br/> Lấy một Cell bên phải và cách cell hiện tại số
+						<code>offset</code> cột.</td>
+				</tr>
+				<tr>
+					<td><b><code> Cell </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Cell.up ( offset ) </b>
+							</code></a> <br/> <br/> Lấy một Cell phía trên và cách cell hiện tại số
+						<code>offset</code> dòng.</td>
+				</tr>
+				<tr>
+					<td><b><code> Cell </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Cell.left ( offset ) </b>
+							</code></a> <br/> <br/> Lấy một Cell bên trái và cách cell hiện tại số
+						<code>offset</code> cột.</td>
+				</tr>
+				<tr>
+					<td><b><code> boolean </code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration: none"><code>
+								<b> Cell.empty ( ) </b>
+							</code></a> <br/> <br/> Kiểm tra một java Cell đó null hoặc trống.</td>
+				</tr>
+			</tbody>
+		</table><br/> 
+		<br/> 
+		<b>Details</b> <br/> 
+		<font color="BLUE"> cần bổ sung... </font>
+		<hr/>
+		<br/>
+
+		</div><!-- END article_body -->
+	
+	<div id='article_extend'>
+			
+	</div>
+			
+		
+<!-----------------------END  START CONTENT ---------------------------------->
+</section>
+</body>
+	
+</html>

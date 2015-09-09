@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src='auto_ls_json.js'></script>
+<script>
+
+var vWhenBackServicesLoaded = function(){
+	
+	//1. compose site swapper
+	
+	back.services.include('/common/site_wrapper.js', null);
+	
+	//2. compose contents
+	
+	var section = document.getElementById('content');
+	for(var i in auto_ls_json){
+		var e = auto_ls_json[i];
+		
+		var item = composeBrief(e);
+		section.appendChild(item);
+	}
+};
+
+function composeBrief(e){
+	
+	var item = document.createElement('div');
+	var title = document.createElement('a');
+	title.href = e.filename;
+	title.innerHTML = e.title;
+	var brief = document.createElement('div');
+	brief.innerHTML = e.brief;
+	var hr = document.createElement('hr');
+	
+	item.appendChild(title);
+	item.appendChild(brief);
+	item.appendChild(hr);
+	
+	return item;
+}
+
+</script>
+
+<script src='back.js'></script>
+<title>Folder content</title>
+</head>
+<body>
+<section id='content'>
+<!--------------------------- START CONTENT ---------------------------------->	
+		<!-- contents loaded by script overhead -->
+<!-----------------------END  START CONTENT ---------------------------------->
+</section>
+</body>
+	
+</html>

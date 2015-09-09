@@ -1,0 +1,22 @@
+sub/auto_ls_json.js
+	contains articles list. should be generated auto.
+sub/ls-all.html
+	read auto_ls_json.js then render to HTML content as list of articles in folder
+sub/back.js
+	included from every article to trace out home dir from current article's view
+sub/common.js
+	be responsible to invoking WebContent/site_wrapper.js
+
+(back.js, auto_ls_json.js, ls-all.html,  common.js) are in every sub folders
+
+WebContent/site_json.js
+	contains data of wrapper (side-bar, project...)
+WebContent/site_wrapper.js
+	used to render site wrapper
+WebContent/style.css
+	layout of page
+
+/back.js
+	contains global services and data registered
+/home.html
+	redirect to about.html

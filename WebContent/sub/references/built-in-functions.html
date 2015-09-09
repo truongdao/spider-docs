@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src='common.js'></script>
+<script src='back.js'></script>
+<title>Built-in functions</title>
+</head>
+<body>
+<section id='content'>
+<!--------------------------- START CONTENT ---------------------------------->
+
+	<div id='article_title' style='font-size: 200%;height: 90px;line-height: 90px;'>
+		Built-in functions
+	</div>
+	<div id='article_brief'>
+		Thư viện này cung cấp những hàm nhập xuất dữ liệu căn bản nhất cũng và các 
+		hàm thao tác hệ thống như nạp một thư viện hay tương tác các đối tượng của 
+		javascript engine với các đối tượng của Java.<br/>
+	</div>
+	<div id='article_body'>
+		
+		Thư viện này thì được nạp trong quá trình khởi động hệ thống. Tệp mã nguồn 
+		script cũng được nén cùng gói chương trình nên người sử dụng không thấy 
+		được tệp <code>builtins.js</code><br/>
+		
+		<br/>
+		<table border="1" style="width:100%">
+			<tbody>
+				<tr>
+					<td bgcolor="aqua"><b>Modifier and Type</b></td>
+					<td bgcolor="aqua"><b>Description</b></td>
+				</tr>
+				<tr>
+					<td><b><code>Object</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function convert( jso_name, jv_classpath_str )	</b></code></a><br/>
+					<br/> Tạo đối tượng java mới có java interface là <code>jv_classpath_str</code> 
+					và nội dung là một javascript object <code>jso_name</code> theo tên.</td>
+				</tr>
+				<tr>
+					<td><b><code>Object</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function find( var_name )</b></code></a><br/>
+					<br/> Tìm và trả về một đối tượng javascript bởi chuổi string <code>var_name</code>
+					có tên của nó. Cung cấp cho người dùng phương pháp truy cập biến javascript bằng tên động.</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function copy(var_name, ref_obj_name)</b></code></a><br/>
+					<br/> Tạo một biến toàn cục javascript đặt tên theo <code>var_name</code> và giá trị khởi tạo 
+					là một javascript object có tên <code>ref_obj_name</code></td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function disableGUI(option)</b></code></a><br/>
+					<br/> Tắt giao diện Window hoặc mở lại, tùy <code>option</code> là <code>true/false</code>.</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function eval( js_path )</b>
+					</code></a><br/>
+					<br/> Nạp và thực thi một tệp <code>.js</code> tại đường dẫn <code>js_path</code>, 
+					thường thì đó là một thư viện.<br/> 
+					
+					*<code>js_path</code> có thể là đường dẫn tuyệt đối, tương đối của thư mục hiện hành 
+					hay tương đối của thư mục looup (thư mục cài đặt).</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function loadjar( jar_url )</b></code></a><br/>
+					<br/> Thêm một tệp thư viện <code>.jar</code> tại đường dẫn <code>jar_url</code> vào 
+					<code>JVM classpath</code>. Từ đây các gói trong thư viện thể được <code>import</code> 
+					trong môi trường javascript. Bước này được coi như là "nạp một thư viện gốc".<br/> 
+					
+					*<code>js_path</code></td>
+				</tr>
+				<tr>
+					<td><font color="#006000" face="monospace"><b>[java Object]</b></font></td>
+					<td><span style="color:rgb(121,93,163);font-family:Consolas,Liberation Mono,Menlo,Courier,monospace;font-size:12px;line-height:16.7999992370605px;white-space:pre">function loadclass</span><span style="font-family:Consolas,Liberation Mono,Menlo,Courier,monospace;font-size:12px;line-height:16.7999992370605px;white-space:pre">(</span><span style="font-family:Consolas,Liberation Mono,Menlo,Courier,monospace;font-size:12px;line-height:16.7999992370605px;white-space:pre">path_class</span><span style="font-family:Consolas,Liberation Mono,Menlo,Courier,monospace;font-size:12px;line-height:16.7999992370605px;white-space:pre">)</span>
+					<br/>
+					<br/>Nạp một đối tượng mới từ file .class (Đối tượng phải có constructor rỗng)</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function out( msg )</b></code></a><br/>
+					<br/> In một chuổi <code>msg</code> ra màn hình console (của ScriptLab hay JVM, tùy cấu hình).</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function outln( msg )</b></code></a><br/>
+					<br/> In ra một chuổi <code>msg</code> trên dòng mới của màn hình console (của Script Lab hay JVM, tùy cấu hình).
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function clear()</b></code></a>
+					<br/>
+					<br/> Xóa nội dung màn hình console của Scripting Lab.</td>
+				</tr>
+				<tr>
+					<td><b><code>string</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function input()</b></code></a><br/>
+					<br/> Hiện cửa sổ nhập một chuỗi string và trả về.
+					</td>
+				</tr>
+				<tr>
+					<td><b><code>void</code></b></td>
+					<td><a href="#builtins_convert" style="text-decoration:none">
+					<code><b>function exit()</b></code></a><br/>
+					<br/> Thoát khỏi chương trình.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+		<br/>
+		<b>Details</b>
+		<br/>
+		<font color="BLUE"> cần bổ sung... </font>
+		<hr/>
+		<br/>
+				
+	</div><!-- END article_body -->
+	
+	<div id='article_extend'>
+			
+	</div>
+			
+		
+<!-----------------------END  START CONTENT ---------------------------------->
+</section>
+</body>
+	
+</html>

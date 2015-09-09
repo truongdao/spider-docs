@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src='common.js'></script>
+<script src='back.js'></script>
+<title>report.js</title>
+</head>
+<body>
+<section id='content'>
+<!--------------------------- START CONTENT ---------------------------------->
+
+	<div id='article_title' style='font-size: 200%;height: 90px;line-height: 90px;'>
+		report.js
+	</div>
+	<div id='article_brief'>
+		Thư viện hỗ trợ việc xuất các báo cáo text file  (giống một trang jsp nhưng dùng js làm ngôn ngữ nền).
+	</div>
+	<div id='article_body'>
+	
+		Có thể truyền dữ liệu vào cho report dưới dạng json, nếu gọi từ chương trình javascript, 
+		chỉ đơn giản là xuất đối tượng dữ liệu đó ra thành dạng chuỗi, và truyền vào hàm xử lý report, 
+		hàm xử lý report sẽ đặt dữ liệu đó vào biến toàn cục tên 'input', trang báo cáo cần truy xuất 
+		biến này để lấy dữ liệu ra. Trang report sẽ được xử lý trên một script engine riêng nên nó 
+		không thể trực tiếp truy xuất các biến của chương trình.<br/>
+		
+		Có thể thay đổi các ký tự đánh dấu embedded code thay vì &lt;%%&gt; như thông lệ bằng cách 
+		ghi đè biến <code>INLINE_OPEN, INLINE_CLOSE</code> trước khi chạy. Việc này có ý nghỉa là ta có thể tận 
+		dụng các ký tự comment của trang gốc để chứa code xử lý. Ví dụ nhúng vào C, ta có thể dùng 
+		cặp <code> {INLINE_OPEN, INLINE_CLOSE} = { "/*!", "!*/"}</code> để nhận diện.<br/>
+		
+		<p>Example:
+		<pre> 
+	----- test1.jrt file -----
+	 
+	  &lt;p&gt;Counting to three:&lt;/p&gt;
+		&lt;% for (var i=1; i&lt;=input.lines; i++) { %&gt;
+		 &lt;p&gt;This number is &lt;%= i %&gt;.&lt;/p&gt;
+		&lt;% } %&gt;
+		&lt;p&gt;&lt;%=input.name%&gt;&lt;/p&gt;
+	--------------------------------------
+		</pre> 	
+		&gt; using report lib (java):
+		<pre>  
+	String report_out = ProcessJRT.executeJRT("test1.jrt", "{lines:3, name:"Truong"}");
+	print(report_out); 
+		</pre> 
+		&gt; using (js) by import report.js
+		<pre>  
+	report_out = report.executeJRT("test1.jrt", "{lines:3, name:"Truong"}");
+	outln(report_out);
+		</pre> 
+		&gt; output:
+		<pre> 
+	&lt;p&gt;Counting to three:&lt;/p&gt;
+	&lt;p&gt;This number  is 1.&lt;/p&gt;
+	&lt;p&gt;This number  is 2.&lt;/p&gt;
+	&lt;p&gt; Truong &lt;/p&gt;
+		</pre>
+
+				
+	</div><!-- END article_body -->
+	
+	<div id='article_extend'>
+			
+	</div>
+			
+		
+<!-----------------------END  START CONTENT ---------------------------------->
+</section>
+</body>
+	
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src='common.js'></script>
+<script src='back.js'></script>
+<title>Installation</title>
+</head>
+<body>
+<section id='content'>
+<!--------------------------- START CONTENT ---------------------------------->
+
+	<div id='article_title' style='font-size: 200%;height: 90px;line-height: 90px;'>
+		Installation
+	</div>
+	<div id='article_brief'>
+		Có 2 cách cài đặt chương trình chính: dạng portable, chạy file .jar ở 
+		thư mục bất kỳ hoặc thực thi file script có đuôi .jsx (khi đã cài đặt
+		 chương trình ở đâu đó từ trước).
+	</div>
+	<div id='article_body'>
+
+<ol>
+	<li><h3>Run as portable program </h3> </li>
+	
+	Đảm bảo rằng trong thư mục có cả tệp thực thi <code>ScriptingLab.jar</code> 
+	và thư mục <code>ScriptingLab.data</code>. Thư mục <code>ScriptingLab.data</code> 
+	để chứa các thư viện mở rộng và chương trình chính.<br/> 
+	Quá trình nạp các tệp khi khởi động:
+	<br/>
+	<br/>
+	<center><img alt="ScriptingLab.jar -&gt;config.js -&gt;libs -&gt;main.js" 
+	src="installation/startup_files.jpg" /></center>
+	
+	<li><h3>Execute files with association <code>.jsx</code></h3></li>
+	
+	<ol>
+		<li> 
+			Chép 3 tệp <code>ScriptingLab.jar, run.bat, test.jsx </code> và thư mục <code>		
+			ScriptingLab.data</code> vào một thư mục bất kỳ.
+			<br/>
+			<br/>
+			<center><img alt="ScriptingLab.jar, run.bat, ScriptingLab.data" 
+			src="installation/installation_files.jpg" /></center>
+		</li>
+		<li> 
+			Sửa nội dung tệp <code>run.bat</code>. Thay đường dẫn tới thư mục 
+			chứa những tệp cài đặt này vào vị trí được tô đậm. Ở đây thư mục cài đặt 
+			của tôi là <code>D:\my\Proj_TaskWizard\TestPlace</code> nên nội dung tệp
+			 <code>run.bat</code> như sau:
+			<br/>
+			<br/>
+			<center><img alt="run.bat content" 
+			src="installation/edit_run_bat.jpg" /></center>
+		</li>
+		<li> 
+			Đăng ký các tệp có đuôi <code>.jsx</code> mở bằng chương trình. Nhấp phải 
+			chuột vào tệp <code>test.jsx</code> chọn <b>Open with...</b>, Nhấp <b>Browse...</b> 
+			trong hộp thoại Open with, trỏ tới tệp <code>run.bat</code> này 
+			trong hộp thoại chọn tệp, OK.
+			<br/>
+			<br/>
+			<center><img alt="run.bat file" 
+			src="installation/setup_open_with.jpg" /></center>
+		</li>
+		<br/> 
+	Cài đặt đã hoàn tất. Giờ các tệp có đuôi <code>.jsx</code> ở vị trí bất kỳ sẽ 
+	luôn được mở bằng chương trình. Tệp <code>.jsx</code> là một tệp <code>javascript</code>. 
+	Giờ hãy kiểm tra bằng cách nháy đôi vào tệp <code>test.jsx</code>
+	</ol><!-- END of 1.x -->
+	<li><h3>Run from command line (less common)</h3></li>
+</ol><!-- END of x. -->
+	<br/>
+
+
+	</div><!-- END article_body -->
+	
+	<div id='article_extend'>
+			
+	</div>
+			
+		
+<!-----------------------END  START CONTENT ---------------------------------->
+</section>
+</body>
+	
+</html>

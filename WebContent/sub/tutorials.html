@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src='common.js'></script>
+<script src='back.js'></script>
+<title>Tutorials</title>
+</head>
+<body>
+<section id='content'>
+<!--------------------------- START CONTENT ---------------------------------->
+
+	<div id='article_title' style='font-size: 200%;height: 90px;line-height: 90px;'>
+		Tutorials
+	</div>
+	<div id='article_brief'>
+		Hướng dẫn này được tổ chức theo trình độ từ đơn giản đến nâng cao. Chúc vui! :(
+	</div>
+	<div id='article_body'>
+
+<ol>
+	<li><h3>Say 'helloworld'</h3></li>
+	
+	 	Đầu tiên hãy đảm bảo rằng chương trình đã được cài đặt đúng yêu cầu. Có thể 
+	 	kích hoạt chương trình bằng cách chạy <code>ScriptingLab.jar</code> 
+	 	(dạng portable) hoặc mở một tệp <code>.jsx</code> trống.
+	
+		<br /><hr/>
+		Chương trình helloworld đầu tiên: <br/><br/> 
+			1. Double click "ScriptingLab.jar" <br/> 
+			2. Nhập <code>outln('hello world!')</code> trong khung soạn thảo code màu đen<br/> 
+			3. Nhấp <b>Run</b><br/> 
+			4. Kiểm tra khung console phía dưới hiện dòng chữ <code>"hello world!"</code><br/>
+			<br/>
+			
+		<center><img alt="Output hello world" 
+		src="tutorials/tut1_hellow.JPG" /></center>
+		<hr/> 
+		Chương trình helloworld đầu tiên đơn giản là in ra console một dòng chữ.<br/>
+	
+	<li><h3>GUI Interface</h3></li>
+		
+	 	Giải thích một chút chức năng của giao diện:<br/>
+		<br/>
+		<ul>
+			<li>Nút <b>Run</b>: </li>
+			<li>Nút <b>Save</b>: </li>
+			<li>Nút <b>Browser</b>: </li>
+			<li>Nút <b>?</b>: </li>
+			<li>Nút <b>Clear</b>: </li>
+			<li><b>Thanh địa chỉ</b>: </li>
+			<li><b>Code editor</b>: </li>
+			<li><b>Output console</b>: </li>
+			<li><b>Phím tắt</b>: </li>
+		</ul>
+		
+	<li><h3>Using Libraries</h3></li>
+	
+ 		Có hai loại thư viện: thư viện <code>Java .jar</code> và thư viện <code>javascript .js</code>. 
+ 		Để nạp một thư viện jar, sử dụng hàm <code>loadjar( jar_path )</code>. Để nạp thư viện js, 
+ 		sử dụng <code>eval( js_path )</code>.<br/> 
+ 		Đường dẫn tới các thư viện có thể là tuyệt đối, tương đối theo vị trí chương trình được cài đặt 
+ 		(lookup) hay tương đối theo vị trí chương trình được kích hoạt (bởi chạy tệp <code>.jsx</code>).<br/> 
+ 		
+ 		Để nạp các thư viện khi chương trình khởi động, cần đăng ký trong tệp <code>config.js</code>. 
+ 		Bước đăng ký chỉ đơn giản là gọi hàm <code>eval() hay loadjar()</code>.<br/>
+ 		<br/> 
+ 		*Cần lưu ý về thư mục làm việc: thư mục chứa tệp <code>.jsx</code> mà kích hoạt chương trình 
+ 		là thư mục chính, thư mục cài đặt có tệp <code>ScriptingLab.jar</code> là thư mục lookup 
+ 		( nếu không tìm thấy thư viện trong thư mục chính, chương trình sẽ tìm trong thư mục lookup). 
+ 		Tính năng lookup folder chỉ hỗ trợ cho phương thức <code>eval() và loadjar()</code>, 
+ 		không hỗ trợ cho các kiểu đọc file thông thường khác.<br/>
+ 		
+	<li><h3>Use cases</h3></li>
+
+</ol>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	</div><!-- END article_body -->
+	
+	<div id='article_extend'>
+			
+	</div>
+			
+		
+<!-----------------------END  START CONTENT ---------------------------------->
+</section>
+</body>
+	
+</html>
