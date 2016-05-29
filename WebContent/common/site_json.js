@@ -6,7 +6,7 @@
 back.data.site = {
 		
 	'header' : {
-		'prj_name' : 'Scripting Lab Project' ,
+		'prj_name' : 'Spider v2 Project' ,
 		'home'	:	'home.html'
 	},
 	'leftside_json' : {
